@@ -22,23 +22,23 @@
 </style>
 
 <body>
-  <div class="tabs" id="tabs">
-    <button id="Tab1" aria-labelledby="Home" class="Tab" onclick="tabClick(1)"  role="tab" aria-selected="true" tabindex="0">Home</button>
-    <button id="Tab2"  aria-labelledby="About" class="Tab" onclick="tabClick(2)"  role="tab" aria-selected="false" tabindex="-1">About</button>
-    <button id="Tab3"   aria-labelledby="Contact" class="Tab" onclick="tabClick(3)"  role="tab" aria-selected="false" tabindex="-1">Contact</button>
+  <div class="tabs" id="tabs" role="tablist">
+    <button id="Tab1" aria-labelledby="Home" class="Tab" aria-controls="content1" onclick="tabClick(1)"  role="tab" aria-selected="true" tabindex="0">Home</button>
+    <button id="Tab2"  aria-labelledby="About" class="Tab" aria-controls="content2" onclick="tabClick(2)"  role="tab" aria-selected="false" tabindex="-1">About</button>
+    <button id="Tab3"   aria-labelledby="Contact" class="Tab" aria-controls="content3" onclick="tabClick(3)"  role="tab" aria-selected="false" tabindex="-1">Contact</button>
   </div>
 
-  <div id="content1">
+  <div id="content1" role="tabpanel">
     <h2>Home Page</h2>
     <p>This is my home page</p>
   </div>
 
-  <div id="content2">
+  <div id="content2" role="tabpanel">
     <h2>About Page</h2>
     <p>This is my about page</p>
   </div>
 
-  <div id="content3">
+  <div id="content3" role="tabpanel">
     <h2>Contact Page</h2>
     <p>This is my contact page</p>
   </div>
@@ -54,7 +54,6 @@
       let tab1=document.getElementById("Tab1");
       let tab2=document.getElementById("Tab2");
       let tab3=document.getElementById("Tab3");
-      
       
       x.style.display = "none";
       y.style.display = "none";
@@ -93,10 +92,10 @@
         if (e.target.parentElement.nextElementSibling) {
           e.target.previousElementSibling.focus();
         }
-        
       }
     });
   </script>
 </body>
 
 </html>
+
