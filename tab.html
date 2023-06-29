@@ -23,9 +23,9 @@
 
 <body>
   <div class="tabs" id="tabs">
-    <button id="Tab1" aria-labelledby="Home" class="Tab" onclick="tabClick(1)"  role="tab" aria-selected="true">Home</button>
-    <button id="Tab2"  aria-labelledby="About" class="Tab" onclick="tabClick(2)"  role="tab" aria-selected="false">About</button>
-    <button id="Tab3"   aria-labelledby="Contact" class="Tab" onclick="tabClick(3)"  role="tab" aria-selected="false">Contact</button>
+    <button id="Tab1" aria-labelledby="Home" class="Tab" onclick="tabClick(1)"  role="tab" aria-selected="true" tabindex="0">Home</button>
+    <button id="Tab2"  aria-labelledby="About" class="Tab" onclick="tabClick(2)"  role="tab" aria-selected="false" tabindex="-1">About</button>
+    <button id="Tab3"   aria-labelledby="Contact" class="Tab" onclick="tabClick(3)"  role="tab" aria-selected="false" tabindex="-1">Contact</button>
   </div>
 
   <div id="content1">
