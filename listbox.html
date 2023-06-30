@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ListBox</title>
+</head>
+
+<body>
+    <p>List Box</p>
+    <div class="listbox" id="fruitlist">
+        <select name="listbox" id="list" size="5" onchange="list()" >
+            <option id="fruit1" aria-labelledby="apple" aria-selected="true" tabindex="0">Apple</option>
+            <option id="fruit2" aria-labelledby="mango" aria-selected="false" tabindex="-1">Mango</option>
+            <option id="fruit3" aria-labelledby="strawberry" aria-selected="false" tabindex="-1">Starwberry</option>
+            <option id="fruit4" aria-labelledby="kiwi" aria-selected="false" tabindex="-1">Kiwi</option>
+            <option id="fruit5" aria-labelledby="banana" aria-selected="false" tabindex="-1">Banana</option>
+            <option id="fruit6" aria-labelledby="pineapple" aria-selected="false" tabindex="-1">Pineapple</option>
+        </select>
+    </div>
+    <script>
+        function list() {
+            let a = document.getElementById("fruit1");
+            let b = document.getElementById("fruit2");
+            let c = document.getElementById("fruit3");
+            let d = document.getElementById("fruit4");
+            let e = document.getElementById("fruit5");
+            let f = document.getElementById("fruit6");
+            let list1 = document.getElementById("fruit1");
+            let list2 = document.getElementById("fruit2");
+            let list3 = document.getElementById("fruit3");
+            let list4 = document.getElementById("fruit4");
+            let list5 = document.getElementById("fruit5");
+            let list6 = document.getElementById("fruit6");
+
+            a.setAttribute("aria-selected", "false");
+            b.setAttribute("aria-selected", "false");
+            c.setAttribute("aria-selected", "false");
+            d.setAttribute("aria-selected", "false");
+            e.setAttribute("aria-selected", "false");
+            f.setAttribute("aria-selected", "false");
+            list1.setAttribute("tabindex", "-1");
+            list2.setAttribute("tabindex", "-1");
+            list3.setAttribute("tabindex", "-1");
+            list4.setAttribute("tabindex", "-1");
+            list5.setAttribute("tabindex", "-1");
+            list6.setAttribute("tabindex", "-1");
+
+
+            if (list === 1) {
+
+                a.setAttribute("aria-selected", "true");
+                list1.setAttribute("tabindex", "0");
+            } else if (list === 2) {
+
+                b.setAttribute("aria-selected", "true");
+                list2.setAttribute("tabindex", "0");
+            } else if (list === 3) {
+
+                c.setAttribute("aria-selected", "true");
+                list3.setAttribute("tabindex", "0");
+            } else if (list === 4) {
+
+                d.setAttribute("aria-selected", "true");
+                list4.setAttribute("tabindex", "0");
+            }
+            else if (list === 5) {
+
+                e.setAttribute("aria-selected", "true");
+                list5.setAttribute("tabindex", "0");
+            }
+            else if (list === 6) {
+
+                f.setAttribute("aria-selected", "true");
+                list6.setAttribute("tabindex", "0");
+            }
+
+
+        }
+        const listbox = document.getElementById("fruitlist");
+
+    listbox.addEventListener("keydown", e => {
+        if (e.key === "ArrowUp") {
+            if (e.target.parentElement.previousElementSibling) {
+                e.target.parentElement.previousElementSibling.firstElementChild.focus();
+            }
+        } else if (e.key === "ArrowDown") {
+            if (e.target.parentElement.nextElementSibling) {
+                e.target.parentElement.nextElementSibling.firstElementChild.focus();
+            }
+        }
+        });
+    </script>
+</body>
+
+</html>
