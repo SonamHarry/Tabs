@@ -10,9 +10,6 @@ fruitlist.addEventListener("keydown", function (e) {
       currentOption.setAttribute("aria-selected", "false");
       currentOption.setAttribute("tabindex", "-1");
       previousElement.focus();
-    } else {
-      const lastOption = fruitlist.lastElementChild;
-      lastOption.focus();
     }
   } else if (e.key === "ArrowDown") {
     e.preventDefault();
@@ -23,9 +20,6 @@ fruitlist.addEventListener("keydown", function (e) {
       currentOption.setAttribute("aria-selected", "false");
       currentOption.setAttribute("tabindex", "-1");
       nextElement.focus();
-    } else {
-      const firstOption = fruitlist.firstElementChild;
-      firstOption.focus();
     }
   }
 });
