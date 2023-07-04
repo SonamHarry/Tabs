@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SearchBox</title>
+    <style>
+        #fruitlist{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Search Box</p>
+    <h2>Choose your favourite fruit:</h2>
+    <input type="text" id="inputText" placeholder="search">
+    <div role="listbox" class="fruitlist" aria-label="fruit list" id="fruitlist">
+
+        <div id="fruit1" role="option" aria-selected="true" tabindex="0">Apple</div>
+        <div id="fruit2" role="option" aria-selected="false" tabindex="-1">Mango</div>
+        <div id="fruit3" role="option" aria-selected="false" tabindex="-1">Starwberry</div>
+        <div id="fruit4" role="option" aria-selected="false" tabindex="-1">Kiwi</div>
+        <div id="fruit5" role="option" aria-selected="false" tabindex="-1">Banana</div>
+        <div id="fruit6" role="option" aria-selected="false" tabindex="-1">Pineapple</div>
+    </div>
+
+
+    <script>
+      const inputText = document.getElementById("inputText");
+const fruitlist = document.querySelector(".fruitlist");
+const options = fruitlist.querySelectorAll('[role="option"]');
+
+inputText.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" || e.key === ' ' || (e.altKey && e.key === 'ArrowDown')) {
+    fruitlist.style.display = "block";
+    fruitlist.focus();
+  }
+});
+
+fruitlist.addEventListener("keydown", function (e) {
+  const currentOption = e.target;
+  if (e.key === "ArrowUp") {
+    e.preventDefault();
+    const previousElement = currentOption.previousElementSibling;
+    if (previousElement) {
+      previousElement.setAttribute("aria-selected", "true");
+      previousElement.setAttribute("tabindex", "0");
+      currentOption.setAttribute("aria-selected", "false");
+      currentOption.setAttribute("tabindex", "-1");
+      previousElement.focus();
+    }
+  } else if (e.key === "ArrowDown") {
+    e.preventDefault();
+    const nextElement = currentOption.nextElementSibling;
+    if (nextElement) {
+      nextElement.setAttribute("aria-selected", "true");
+      nextElement.setAttribute("tabindex", "0");
+      currentOption.setAttribute("aria-selected", "false");
+      currentOption.setAttribute("tabindex", "-1");
+      nextElement.focus();
+    }
+  }
+});
+
+function activateListItem(listItem) {
+  inputText.value = listItem.textContent;
+  fruitlist.style.display = "none";
+}
+
+function listItemEnter(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const listItem = e.target;
+    activateListItem(listItem);
+  }
+}
+
+options.forEach(option => {
+  option.addEventListener('keydown', listItemEnter);
+});
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
