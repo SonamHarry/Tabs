@@ -9,7 +9,6 @@
         .selected {
             background-color: pink;
         }
-
         .fruitlist {
             display: none;
         }
@@ -17,26 +16,22 @@
 </head>
 
 <body>
-    <label>
-        <h1>Choose your favorite fruit.</h1>
-    </label>
-    <span id="fruitlist"></span>
     <div>
         <br>
         <label for="searchbox">Choose your favorite fruit:</label>
         <br>
-        <input type="text" id="searchbox">
-        <div class="fruitlist" id="fruit-options" role="listbox" aria-activedescendant="selected">
-            <div role="option" aria-selected="true">Red</div>
-            <div role="option">Apple</div>
-            <div role="option">Mango</div>
-            <div role="option">Kiwi</div>
-            <div role="option">Grape</div>
-            <div role="option">Banana</div>
-            <div role="option">Pineapple</div>
+        <input type="text" id="searchbox" aria-activedescendant="selected" />
+        <div class="fruitlist" id="fruit-options" aria-label="fruit-options" role="listbox">
+            <div role="option" id="Strawberry" class="selected" aria-selected="true">Strawberry</div>
+            <div role="option" id="Apple">Apple</div>
+            <div role="option" id="Mango">Mango</div>
+            <div role="option" id="Kiwi">Kiwi</div>
+            <div role="option" id="Grape">Grape</div>
+            <div role="option" id="Banana">Banana</div>
+            <div role="option" id="Pineapple">Pineapple</div>
         </div>
     </div>
- <script src="search.js"></script>
+    <script src="search.js"> </script>
 </body>
 
 </html>
