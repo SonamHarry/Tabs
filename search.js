@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('keydown', function () {
     const searchbox = document.getElementById('searchbox');
     const options = document.querySelectorAll('#fruit-options div');
     let selectedIndex = 0;
