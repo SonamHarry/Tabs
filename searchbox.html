@@ -4,171 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SearchBox</title>
+    <title>List Box</title>
     <style>
-        #fruitlist{
+        .selected {
+            background-color: pink;
+        }
+
+        .fruitlist {
             display: none;
         }
     </style>
 </head>
 
 <body>
-    <p>Search Box</p>
-    <h2>Choose your favourite fruit:</h2>
-    <input type="text" id="inputText" placeholder="search">
-    <div role="listbox" class="fruitlist" aria-label="fruit list" id="fruitlist">
-
-        <div id="fruit1" role="option" aria-selected="true" tabindex="0">Apple</div>
-        <div id="fruit2" role="option" aria-selected="false" tabindex="-1">Mango</div>
-        <div id="fruit3" role="option" aria-selected="false" tabindex="-1">Starwberry</div>
-        <div id="fruit4" role="option" aria-selected="false" tabindex="-1">Kiwi</div>
-        <div id="fruit5" role="option" aria-selected="false" tabindex="-1">Banana</div>
-        <div id="fruit6" role="option" aria-selected="false" tabindex="-1">Pineapple</div>
+    <label>
+        <h1>Choose your favorite fruit.</h1>
+    </label>
+    <span id="fruitlist"></span>
+    <div>
+        <br>
+        <label for="searchbox">Choose your favorite fruit:</label>
+        <br>
+        <input type="text" id="searchbox">
+        <div class="fruitlist" id="fruit-options" role="listbox" aria-activedescendant="selected">
+            <div role="option" aria-selected="true">Red</div>
+            <div role="option">Apple</div>
+            <div role="option">Mango</div>
+            <div role="option">Kiwi</div>
+            <div role="option">Grape</div>
+            <div role="option">Banana</div>
+            <div role="option">Pineapple</div>
+        </div>
     </div>
-
-
-    <script src="search.js"></script>
+ <script src="search.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
