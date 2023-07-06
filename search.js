@@ -1,51 +1,34 @@
-const inputText = document.getElementById("inputText");
-const fruitlist = document.querySelector(".fruitlist");
-const options = fruitlist.querySelectorAll('[role="option"]');
-
-inputText.addEventListener("keydown", function (e) {
-  if (e.key === "Enter" || e.key === ' ' || (e.altKey && e.key === 'ArrowDown')) {
-    fruitlist.style.display = "block";
-    fruitlist.focus();
+document.addEventListener('keydown', function () {
+  const searchbox = document.getElementById('searchbox');
+  const options = document.querySelectorAll('#fruit-options div[role="option"]');
+  let selectedIndex = 0;
+  let listVisible = false;
+  function changeSelection(event) {
+      const selected = document.querySelector('.selected');
+      if (!selected) {
+          options[0].classList.add('selected');
+          return;
+      }
+      if (!listVisible && (event.key ==='Enter' || event.key === ' ')) {
+          listVisible = true;
+          document.getElementById('fruit-options').style.display = 'block';
+          return;
+      }
+      if (listVisible && event.key === 'Escape') {
+          listVisible = false;
+          document.getElementById('fruit-options').style.display = 'none';
+          return;
+      }
+      if (listVisible) {
+          if (event.key === 'ArrowDown' && selectedIndex < options.length - 1) {
+              selectedIndex++;
+          } else if (event.key === 'ArrowUp' && selectedIndex > 0) {
+              selectedIndex--;
+          }
+          selected.classList.remove('selected');
+          options[selectedIndex].classList.add('selected');
+          document.getElementById('fruit-options').setAttribute('aria-activedescendant', options[selectedIndex].id);
+      }
   }
-});
-
-fruitlist.addEventListener("keydown", function (e) {
-  const currentOption = e.target;
-  if (e.key === "ArrowUp") {
-    e.preventDefault();
-    const previousElement = currentOption.previousElementSibling;
-    if (previousElement) {
-      previousElement.setAttribute("aria-selected", "true");
-      previousElement.setAttribute("tabindex", "0");
-      currentOption.setAttribute("aria-selected", "false");
-      currentOption.setAttribute("tabindex", "-1");
-      previousElement.focus();
-    }
-  } else if (e.key === "ArrowDown") {
-    e.preventDefault();
-    const nextElement = currentOption.nextElementSibling;
-    if (nextElement) {
-      nextElement.setAttribute("aria-selected", "true");
-      nextElement.setAttribute("tabindex", "0");
-      currentOption.setAttribute("aria-selected", "false");
-      currentOption.setAttribute("tabindex", "-1");
-      nextElement.focus();
-    }
-  }
-});
-
-function activateListItem(listItem) {
-  inputText.value = listItem.textContent;
-  fruitlist.style.display = "none";
-}
-
-function listItemEnter(e) {
-  if (e.key === 'Enter' || e.key === ' ') {
-    const listItem = e.target;
-    activateListItem(listItem);
-  }
-}
-
-options.forEach(option => {
-  option.addEventListener('keydown', listItemEnter);
+  searchbox.addEventListener('keydown', changeSelection);
 });
