@@ -1,4 +1,4 @@
-document.addEventListener('keydown', function () {
+document.addEventListener('keydown', function (event) {
     const searchbox = document.getElementById('searchbox');
     const options = document.querySelectorAll('#fruit-options div');
     let selectedIndex = 0;
@@ -12,11 +12,10 @@ document.addEventListener('keydown', function () {
             return;
         }
 
-        if (!listVisible && (event.key === 'Enter' || event.key === ' ')) {
+        if (!listVisible && (event.key === 'Enter' || event.key === ' ' || (event.altKey && event.key === 'ArrowDown'))) {
             listVisible = true;
             document.getElementById('fruit-options').style.display = 'block';
             searchbox.setAttribute('aria-expanded', 'true');
-            console.log("asd")
             return;
         }
 
@@ -39,19 +38,26 @@ document.addEventListener('keydown', function () {
             searchbox.setAttribute('aria-activedescendant', options[selectedIndex].id);
             searchbox.value = options[selectedIndex].innerText;
         }
+
+        if (listVisible && event.key === 'Enter') {
+            searchbox.value = selected.innerText;
+            listVisible = false;
+            document.getElementById('fruit-options').style.display = 'none';
+            searchbox.setAttribute('aria-expanded', 'false');
+            searchbox.focus();
+        }
     }
 
     searchbox.addEventListener('keydown', changeSelection);
-
     options.forEach(function (option) {
         option.addEventListener('click', function (event) {
             const clickedItem = event.target;
             const selected = document.querySelector('.selected');
-            
+
             if (selected) {
                 selected.classList.remove('selected');
             }
-            
+
             clickedItem.classList.add('selected');
             searchbox.value = clickedItem.innerText;
             listVisible = false;
