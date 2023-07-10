@@ -20,8 +20,8 @@
         <br>
         <label for="searchbox">Choose your favorite fruit:</label>
         <br>
-        <input type="text" role="combobox" aria-expanded="" aria-controls="fruit-options" aria-label="Choose your favorite fruit" placeholder="Choose your favorite fruit" id="searchbox" aria-activedescendant=" " />
-        <div class="fruitlist" id="fruit-options" aria-selected="true" aria-label="fruit-options" role="listbox">
+        <input type="text" role="combobox" aria-label="Choose your favorite fruit" placeholder="Choose your favorite fruit" id="searchbox" aria-activedescendant=" " aria-controls="fruit-options" />
+        <div class="fruitlist" aria-expanded="false" id="fruit-options" aria-selected="true" aria-label="fruit-options" role="listbox">
             <div role="option" id="Strawberry" class="selected">Strawberry</div>
             <div role="option" id="Apple">Apple</div>
             <div role="option" id="Mango">Mango</div>
@@ -31,7 +31,7 @@
             <div role="option" id="Pineapple">Pineapple</div>
         </div>
     </div>
-    <script src="search.js"> </script>
+    <script src="search.js"></script>
 </body>
 
 </html>
