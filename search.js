@@ -1,4 +1,4 @@
-document.addEventListener('keydown', function (event) {
+document.addEventListener('DOMContentLoaded', function () {
     const searchbox = document.getElementById('searchbox');
     const options = document.querySelectorAll('#fruit-options div');
     let selectedIndex = 0;
@@ -37,8 +37,27 @@ document.addEventListener('keydown', function (event) {
             selected.classList.remove('selected');
             options[selectedIndex].classList.add('selected');
             searchbox.setAttribute('aria-activedescendant', options[selectedIndex].id);
+            searchbox.value = options[selectedIndex].innerText;
         }
     }
 
     searchbox.addEventListener('keydown', changeSelection);
+
+    options.forEach(function (option) {
+        option.addEventListener('click', function (event) {
+            const clickedItem = event.target;
+            const selected = document.querySelector('.selected');
+            
+            if (selected) {
+                selected.classList.remove('selected');
+            }
+            
+            clickedItem.classList.add('selected');
+            searchbox.value = clickedItem.innerText;
+            listVisible = false;
+            document.getElementById('fruit-options').style.display = 'none';
+            searchbox.setAttribute('aria-expanded', 'false');
+            searchbox.focus();
+        });
+    });
 });
