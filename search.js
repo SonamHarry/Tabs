@@ -1,4 +1,4 @@
-document.addEventListener('keydown', function (event) {
+document.addEventListener('DOMContentLoaded', function () {
     const searchbox = document.getElementById('searchbox');
     const options = document.querySelectorAll('#fruit-options div');
     let selectedIndex = 0;
@@ -44,7 +44,7 @@ document.addEventListener('keydown', function (event) {
             listVisible = false;
             document.getElementById('fruit-options').style.display = 'none';
             searchbox.setAttribute('aria-expanded', 'false');
-            searchbox.focus();
+            searchbox.focus(); 
         }
     }
 
