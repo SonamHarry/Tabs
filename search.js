@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!listVisible && (event.key === 'Enter' || event.key === ' ' || (event.altKey && event.key === 'ArrowDown'))) {
             listVisible = true;
+            searchbox.setAttribute('aria-activedescendant', Strawberry.id);
             document.getElementById('fruit-options').style.display = 'block';
             searchbox.setAttribute('aria-expanded', 'true');
             return;
@@ -27,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (listVisible) {
-            if (event.key === 'ArrowDown' && selectedIndex < options.length - 1) {
+            if (event.key === 'ArrowDown' && selectedIndex < options.length -1 ) {
                 selectedIndex++;
-            } else if (event.key === 'ArrowUp' && selectedIndex > 0) {
+            } else if (event.key === 'ArrowUp' && selectedIndex >  0) {
                 selectedIndex--;
             }
 
@@ -66,4 +67,4 @@ document.addEventListener('DOMContentLoaded', function () {
             searchbox.focus();
         });
     });
-});
+}); 
