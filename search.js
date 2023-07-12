@@ -9,29 +9,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!selected) {
             options[0].classList.add('selected');
-            return;
+           
         }
 
         if (!listVisible && (event.key === 'Enter' || event.key === ' ' || (event.altKey && event.key === 'ArrowDown'))) {
             listVisible = true;
-            searchbox.setAttribute('aria-activedescendant', Strawberry.id);
+            searchbox.setAttribute('aria-activedescendant', 'Strawberry');
             document.getElementById('fruit-options').style.display = 'block';
             searchbox.setAttribute('aria-expanded', 'true');
             return;
         }
 
-        if (listVisible && event.key === 'Escape') {
+        if (listVisible && (event.key === 'Escape'|| event.key === 'Backspace' || event.key === 'Delete')) {
             listVisible = false;
             document.getElementById('fruit-options').style.display = 'none';
             searchbox.setAttribute('aria-expanded', 'false');
+            searchbox.focus();
             return;
         }
 
         if (listVisible) {
-            if (event.key === 'ArrowDown' && selectedIndex < options.length -1 ) {
+            if (event.key === 'ArrowDown' && selectedIndex < options.length - 1) {
                 selectedIndex++;
-            } else if (event.key === 'ArrowUp' && selectedIndex >  0) {
+            } else if (event.key === 'ArrowUp' && selectedIndex > 0) {
                 selectedIndex--;
+
             }
 
             selected.classList.remove('selected');
@@ -45,9 +47,10 @@ document.addEventListener('DOMContentLoaded', function () {
             listVisible = false;
             document.getElementById('fruit-options').style.display = 'none';
             searchbox.setAttribute('aria-expanded', 'false');
-            searchbox.focus(); 
+            searchbox.focus();
         }
     }
+    
 
     searchbox.addEventListener('keydown', changeSelection);
     options.forEach(function (option) {
