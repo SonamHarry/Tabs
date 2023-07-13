@@ -1,20 +1,18 @@
 function dropdown() {
     var fruitList = document.getElementById("fruit-options");
-    fruitList.style.display = "none";
-    if (fruitList.style.display === "none") {
+    var listVisible = fruitList.style.display === "none";
+
+    if (listVisible) {
         fruitList.style.display = "block";
     } else {
         fruitList.style.display = "none";
     }
 }
-
 function selectFruit(fruitElement) {
     var selectedFruit = fruitElement.textContent;
     document.getElementById("searchbox").value = selectedFruit;
     dropdown();
 }
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const searchbox = document.getElementById('searchbox');
     const options = document.querySelectorAll('#fruit-options div');
@@ -26,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!selected) {
             options[0].classList.add('selected');
-
         }
 
         if (!listVisible && (event.key === 'Enter' || event.key === ' ' || (event.altKey && event.key === 'ArrowDown'))) {
@@ -50,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 selectedIndex++;
             } else if (event.key === 'ArrowUp' && selectedIndex > 0) {
                 selectedIndex--;
-
             }
 
             selected.classList.remove('selected');
@@ -68,8 +64,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
     searchbox.addEventListener('keydown', changeSelection);
+
+    searchbox.addEventListener('click', function () {
+        listVisible = !listVisible;
+        if (listVisible) {
+            searchbox.setAttribute('aria-activedescendant', 'Strawberry');
+            document.getElementById('fruit-options').style.display = 'block';
+            searchbox.setAttribute('aria-expanded', 'true');
+            searchbox.focus();
+        } else {
+            document.getElementById('fruit-options').style.display = 'none';
+            searchbox.setAttribute('aria-expanded', 'false');
+        }
+    });
+
     options.forEach(function (option) {
         option.addEventListener('click', function (event) {
             const clickedItem = event.target;
@@ -87,4 +96,4 @@ document.addEventListener('DOMContentLoaded', function () {
             searchbox.focus();
         });
     });
-}); 
+});
