@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (!listVisible && (event.key === 'Enter' || event.key === ' ' || (event.altKey && event.key === 'ArrowDown'))) {
             listVisible = true;
-            searchbox.setAttribute('aria-activedescendant', 'Strawberry');
+             searchbox.setAttribute('aria-activedescendant', 'fruit-options');
             document.getElementById('fruit-options').style.display = 'block';
             searchbox.setAttribute('aria-expanded', 'true');
             return;
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     searchbox.addEventListener('click', function () {
         listVisible = !listVisible;
         if (listVisible) {
-            searchbox.setAttribute('aria-activedescendant', 'Strawberry');
+            searchbox.setAttribute('aria-activedescendant', 'fruit-options');
             document.getElementById('fruit-options').style.display = 'block';
             searchbox.setAttribute('aria-expanded', 'true');
             searchbox.focus();
