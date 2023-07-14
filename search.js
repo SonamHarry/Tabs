@@ -1,22 +1,7 @@
-function dropdown() {
-    var fruitList = document.getElementById("fruit-options");
-    var listVisible = fruitList.style.display === "none";
-
-    if (listVisible) {
-        fruitList.style.display = "block";
-    } else {
-        fruitList.style.display = "none";
-    }
-}
-function selectFruit(fruitElement) {
-    var selectedFruit = fruitElement.textContent;
-    document.getElementById("searchbox").value = selectedFruit;
-    dropdown();
-}
 document.addEventListener('DOMContentLoaded', function () {
     const searchbox = document.getElementById('searchbox');
     const options = document.querySelectorAll('#fruit-options div');
-    let selectedIndex = 0;
+    let selectedIndex = -1;
     let listVisible = false;
 
     function changeSelection(event) {
@@ -24,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!selected) {
             options[0].classList.add('selected');
+            selectedIndex = 0;
         }
-
         if (!listVisible && (event.key === 'Enter' || event.key === ' ' || (event.altKey && event.key === 'ArrowDown'))) {
             listVisible = true;
             searchbox.setAttribute('aria-activedescendant', 'Strawberry');
@@ -33,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
             searchbox.setAttribute('aria-expanded', 'true');
             return;
         }
-
         if (listVisible && (event.key === 'Escape' || event.key === 'Backspace' || event.key === 'Delete')) {
             listVisible = false;
             document.getElementById('fruit-options').style.display = 'none';
@@ -41,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
             searchbox.focus();
             return;
         }
-
         if (listVisible) {
             if (event.key === 'ArrowDown' && selectedIndex < options.length - 1) {
                 selectedIndex++;
@@ -54,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
             searchbox.setAttribute('aria-activedescendant', options[selectedIndex].id);
             searchbox.value = options[selectedIndex].innerText;
         }
-
         if (listVisible && event.key === 'Enter') {
             searchbox.value = selected.innerText;
             listVisible = false;
@@ -63,9 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             searchbox.focus();
         }
     }
-
     searchbox.addEventListener('keydown', changeSelection);
-
     searchbox.addEventListener('click', function () {
         listVisible = !listVisible;
         if (listVisible) {
@@ -78,18 +58,17 @@ document.addEventListener('DOMContentLoaded', function () {
             searchbox.setAttribute('aria-expanded', 'false');
         }
     });
-
-    options.forEach(function (option) {
+    options.forEach(function (option, index) {
         option.addEventListener('click', function (event) {
             const clickedItem = event.target;
             const selected = document.querySelector('.selected');
-
             if (selected) {
                 selected.classList.remove('selected');
             }
-
             clickedItem.classList.add('selected');
+
             searchbox.value = clickedItem.innerText;
+            selectedIndex = index;
             listVisible = false;
             document.getElementById('fruit-options').style.display = 'none';
             searchbox.setAttribute('aria-expanded', 'false');
